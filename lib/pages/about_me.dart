@@ -1,11 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../routes/route_const.dart';
 
-class ContactUs extends StatelessWidget {
-  const ContactUs({super.key});
+class AboutMePage extends StatelessWidget {
+  final String name;
+  AboutMePage({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +17,18 @@ class ContactUs extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 100,),
-            Text("Contact us Page"),
+            Text("welcome $name to About me page"),
             SizedBox(height: 30,),
-
-            ElevatedButton(onPressed: (){
-              GoRouter.of(context).pushNamed(RouteConstant.aboutRoute);
-            }, child: Text("About Page")),
-            SizedBox(height: 30,),
-
             ElevatedButton(onPressed: (){
               GoRouter.of(context).pushNamed(RouteConstant.homeRoute);
-            }, child: Text("Home Page")),
+            }, child: Text("HomePage")),
+            SizedBox(height: 30,),
+            ElevatedButton(onPressed: (){
+              // this works with the name of the route
+              // GoRouter.of(context).pushNamed(RouteConstant.contactRoute);
+              //while this works with the path of the route
+              context.go('/contact');
+            }, child: Text("ContactPage")),
           ],
         ),
       ),
