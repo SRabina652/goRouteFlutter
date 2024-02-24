@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:go_router_flutter/pages/about_me.dart';
 import 'package:go_router_flutter/pages/contact_us.dart';
 import 'package:go_router_flutter/pages/home_page.dart';
-import 'package:go_router_flutter/routes/route_const.dart';
+import 'package:go_router_flutter/routes/route_names.dart';
 import '../pages/error_page.dart';
 
 class AppRoutes{
@@ -13,9 +13,7 @@ class AppRoutes{
         GoRoute(
           name: RouteConstant.homeRoute,
           path: '/',
-          pageBuilder: (context,state){
-            return const MaterialPage(child: HomePage());
-          },
+          builder: (context,state)=>HomePage(),
             // child routing
           // routes: [
           //   GoRoute(
@@ -37,18 +35,12 @@ class AppRoutes{
         GoRoute(
           name: RouteConstant.aboutRoute,
           path: '/about/:name',
-          pageBuilder: (context, state){
-            return MaterialPage(child: AboutMePage(
-              name: state.pathParameters['name']!,
-            ));
-          }
+          builder: (context, state)=>AboutMePage(name: state.pathParameters['name']!),
         ),
         GoRoute(
             name:RouteConstant.contactRoute,
             path: '/contact',
-            pageBuilder: (context,state){
-              return const MaterialPage(child: ContactUs());
-            }
+            builder: (context,state)=> ContactUs(),
         ),
       ]
       ,errorPageBuilder: (context,state){
